@@ -1,12 +1,31 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import WelcomeScreen from "@/components/WelcomeScreen";
+import PathSelection from "@/components/PathSelection";
+import ProfessionalWorld from "@/components/ProfessionalWorld";
+import PersonalWorld from "@/components/PersonalWorld";
+
+type Scene = "welcome" | "select" | "professional" | "personal";
 
 const Index = () => {
+  const [scene, setScene] = useState<Scene>("welcome");
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <AnimatePresence mode="wait">
+        {scene === "welcome" && (
+          <WelcomeScreen key="welcome" onComplete={() => setScene("select")} />
+        )}
+        {scene === "select" && (
+          <PathSelection key="select" onSelect={(path) => setScene(path)} />
+        )}
+        {scene === "professional" && (
+          <ProfessionalWorld key="professional" onBack={() => setScene("select")} />
+        )}
+        {scene === "personal" && (
+          <PersonalWorld key="personal" onBack={() => setScene("select")} />
+        )}
+      </AnimatePresence>
     </div>
   );
 };
