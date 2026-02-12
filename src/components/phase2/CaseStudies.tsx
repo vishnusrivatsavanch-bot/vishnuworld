@@ -20,7 +20,7 @@ const CaseStudies = ({ activeFilter }: CaseStudiesProps) => {
     : caseStudies;
 
   return (
-    <section className="py-20 px-6 md:px-16" id="case-studies">
+    <section className="py-10 sm:py-20 px-4 sm:px-6 md:px-16" id="case-studies">
       <motion.div
         className="max-w-6xl mx-auto"
         initial={{ opacity: 0 }}
@@ -28,7 +28,7 @@ const CaseStudies = ({ activeFilter }: CaseStudiesProps) => {
         viewport={{ once: true }}
       >
         <motion.h2
-          className="text-3xl md:text-5xl font-display font-bold mb-4 text-center"
+          className="text-xl sm:text-3xl md:text-5xl font-display font-bold mb-2 sm:mb-4 text-center"
           style={{ color: "hsl(var(--glow-gold))" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -37,7 +37,7 @@ const CaseStudies = ({ activeFilter }: CaseStudiesProps) => {
           Case Studies
         </motion.h2>
         <motion.p
-          className="text-muted-foreground font-body text-center mb-16 text-lg"
+          className="text-muted-foreground font-body text-center mb-8 sm:mb-16 text-sm sm:text-lg"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -46,13 +46,12 @@ const CaseStudies = ({ activeFilter }: CaseStudiesProps) => {
           Deep dives into impactful projects
           {activeFilter && (
             <span style={{ color: "hsl(var(--city-accent))" }}>
-              {" "}
-              — filtered by skill category
+              {" "}— filtered by skill category
             </span>
           )}
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           <AnimatePresence mode="popLayout">
             {filteredStudies.map((study, index) => (
               <motion.div
@@ -76,12 +75,10 @@ const CaseStudies = ({ activeFilter }: CaseStudiesProps) => {
                 onClick={() => setSelectedStudy(study)}
               >
                 {/* Gradient hero */}
-                <div
-                  className={`h-28 bg-gradient-to-r ${study.gradient} relative`}
-                >
+                <div className={`h-24 sm:h-28 bg-gradient-to-r ${study.gradient} relative`}>
                   <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
                   <span
-                    className="absolute bottom-3 left-4 px-2.5 py-0.5 rounded-full text-xs font-body font-medium"
+                    className="absolute bottom-2 sm:bottom-3 left-3 sm:left-4 px-2 sm:px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-body font-medium"
                     style={{
                       background: "hsl(var(--card) / 0.8)",
                       color: "hsl(var(--city-accent))",
@@ -92,15 +89,15 @@ const CaseStudies = ({ activeFilter }: CaseStudiesProps) => {
                   </span>
                 </div>
 
-                <div className="p-5">
+                <div className="p-4 sm:p-5">
                   <h3
-                    className="text-base font-display font-bold mb-2 line-clamp-2"
+                    className="text-sm sm:text-base font-display font-bold mb-1.5 sm:mb-2 line-clamp-2"
                     style={{ color: "hsl(var(--glow-gold))" }}
                   >
                     {study.title}
                   </h3>
 
-                  <p className="font-body text-sm text-muted-foreground mb-4 line-clamp-2">
+                  <p className="font-body text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 line-clamp-2">
                     {study.challenge}
                   </p>
 
@@ -109,7 +106,7 @@ const CaseStudies = ({ activeFilter }: CaseStudiesProps) => {
                       {study.technologies.slice(0, 2).map((tech) => (
                         <span
                           key={tech}
-                          className="px-2 py-0.5 rounded text-xs font-body"
+                          className="px-1.5 sm:px-2 py-0.5 rounded text-[10px] sm:text-xs font-body"
                           style={{
                             background: "hsl(var(--muted) / 0.5)",
                             color: "hsl(var(--foreground) / 0.6)",
@@ -120,7 +117,7 @@ const CaseStudies = ({ activeFilter }: CaseStudiesProps) => {
                       ))}
                       {study.technologies.length > 2 && (
                         <span
-                          className="px-2 py-0.5 rounded text-xs font-body"
+                          className="px-1.5 sm:px-2 py-0.5 rounded text-[10px] sm:text-xs font-body"
                           style={{
                             background: "hsl(var(--muted) / 0.5)",
                             color: "hsl(var(--foreground) / 0.6)",
@@ -132,7 +129,7 @@ const CaseStudies = ({ activeFilter }: CaseStudiesProps) => {
                     </div>
 
                     <motion.div
-                      className="text-muted-foreground group-hover:text-city-accent transition-colors"
+                      className="text-muted-foreground group-hover:text-city-accent transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
                       whileHover={{ x: 4 }}
                     >
                       <ArrowRight className="w-4 h-4" />

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { ArrowLeft, Download, FileText } from "lucide-react";
+import { ArrowLeft, Download, FileText, Check } from "lucide-react";
 import ParticleField from "@/components/ParticleField";
 import ProfessionalTimeline from "./ProfessionalTimeline";
 import SkillMatrix from "./SkillMatrix";
@@ -18,7 +18,6 @@ const ResumePage = ({ onBack }: ResumePageProps) => {
 
   const handleDownloadResume = async () => {
     setDownloading(true);
-    // Small delay for UX feedback
     await new Promise((r) => setTimeout(r, 600));
     generateResumePDF();
     setDownloading(false);
@@ -47,14 +46,29 @@ const ResumePage = ({ onBack }: ResumePageProps) => {
         />
       </div>
 
-      {/* Header */}
-      <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4">
-        <button className="back-button" onClick={onBack}>
-          <ArrowLeft className="inline w-4 h-4 mr-1" /> Back
+      {/* Fixed Header - mobile-first, responsive */}
+      <div
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 h-14 sm:h-16"
+        style={{
+          background: "hsl(var(--background) / 0.85)",
+          backdropFilter: "blur(12px)",
+          borderBottom: "1px solid hsl(var(--border) / 0.15)",
+        }}
+      >
+        <button
+          className="flex items-center gap-1 text-sm font-body text-muted-foreground hover:text-foreground transition-colors min-h-[44px] min-w-[44px] justify-center sm:justify-start"
+          onClick={onBack}
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span className="hidden sm:inline">Back</span>
         </button>
 
+        <h2 className="text-sm sm:text-base font-display font-bold truncate px-2" style={{ color: "hsl(var(--foreground) / 0.8)" }}>
+          Resume & Case Studies
+        </h2>
+
         <motion.button
-          className="flex items-center gap-2 px-5 py-2.5 rounded-full font-body font-medium text-sm border cursor-pointer"
+          className="flex items-center gap-2 px-3 sm:px-5 py-2 rounded-full font-body font-medium text-xs sm:text-sm border cursor-pointer min-h-[44px] min-w-[44px] justify-center"
           style={{
             background: downloaded
               ? "hsl(var(--glow-gold) / 0.2)"
@@ -79,42 +93,44 @@ const ResumePage = ({ onBack }: ResumePageProps) => {
               transition={{ repeat: Infinity, duration: 0.8, ease: "linear" }}
             />
           ) : downloaded ? (
-            <>✓ Downloaded</>
+            <>
+              <Check className="w-4 h-4" />
+              <span className="hidden sm:inline">Downloaded</span>
+            </>
           ) : (
             <>
               <Download className="w-4 h-4" />
-              Download Resume
+              <span className="hidden sm:inline">Resume</span>
             </>
           )}
         </motion.button>
       </div>
 
       {/* Hero */}
-      <div className="relative z-10 pt-28 pb-10 px-6 text-center">
+      <div className="relative z-10 pt-20 sm:pt-28 pb-6 sm:pb-10 px-4 sm:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+          <div
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full mb-4 sm:mb-6"
             style={{
               background: "hsl(var(--city-accent) / 0.1)",
               border: "1px solid hsl(var(--city-accent) / 0.2)",
             }}
           >
-            <FileText className="w-4 h-4" style={{ color: "hsl(var(--city-accent))" }} />
-            <span className="font-body text-sm" style={{ color: "hsl(var(--city-accent))" }}>
-              Phase 2 — Interactive Resume & Case Studies
+            <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4" style={{ color: "hsl(var(--city-accent))" }} />
+            <span className="font-body text-xs sm:text-sm" style={{ color: "hsl(var(--city-accent))" }}>
+              Phase 2 — Interactive Resume
             </span>
           </div>
 
-          <h1
-            className="text-4xl md:text-6xl lg:text-7xl font-display font-bold dream-glow mb-4"
-          >
+          <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold dream-glow mb-3 sm:mb-4">
             The <span style={{ color: "hsl(var(--glow-gold))" }}>Professional</span> Journey
           </h1>
 
-          <p className="text-muted-foreground font-body text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground font-body text-sm sm:text-lg max-w-2xl mx-auto">
             4+ years of driving automation, analytics, and business impact across healthcare and finance
           </p>
         </motion.div>
@@ -127,8 +143,7 @@ const ResumePage = ({ onBack }: ResumePageProps) => {
         <div
           className="w-full h-px my-4"
           style={{
-            background:
-              "linear-gradient(90deg, transparent, hsl(var(--glow-gold) / 0.3), transparent)",
+            background: "linear-gradient(90deg, transparent, hsl(var(--glow-gold) / 0.3), transparent)",
           }}
         />
 
@@ -137,8 +152,7 @@ const ResumePage = ({ onBack }: ResumePageProps) => {
         <div
           className="w-full h-px my-4"
           style={{
-            background:
-              "linear-gradient(90deg, transparent, hsl(var(--city-accent) / 0.3), transparent)",
+            background: "linear-gradient(90deg, transparent, hsl(var(--city-accent) / 0.3), transparent)",
           }}
         />
 
@@ -146,8 +160,8 @@ const ResumePage = ({ onBack }: ResumePageProps) => {
       </div>
 
       {/* Footer */}
-      <div className="relative z-10 py-12 text-center">
-        <p className="text-muted-foreground font-body text-sm">
+      <div className="relative z-10 py-8 sm:py-12 text-center">
+        <p className="text-muted-foreground font-body text-xs sm:text-sm">
           Vishnu's Dream World — Phase 2
         </p>
       </div>
