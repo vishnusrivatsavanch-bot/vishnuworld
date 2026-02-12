@@ -1,10 +1,11 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
-import { ArrowLeft, Briefcase, Code2, FolderOpen, Cpu, X } from "lucide-react";
+import { ArrowLeft, Briefcase, Code2, FolderOpen, Cpu, X, FileText } from "lucide-react";
 import cityHero from "@/assets/city-hero.jpg";
 
 interface ProfessionalWorldProps {
   onBack: () => void;
+  onResume?: () => void;
 }
 
 const sections = [
@@ -64,7 +65,7 @@ const sections = [
   },
 ];
 
-const ProfessionalWorld = ({ onBack }: ProfessionalWorldProps) => {
+const ProfessionalWorld = ({ onBack, onResume }: ProfessionalWorldProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activePanel, setActivePanel] = useState<string | null>(null);
 
@@ -109,6 +110,28 @@ const ProfessionalWorld = ({ onBack }: ProfessionalWorldProps) => {
       <button className="back-button" onClick={onBack}>
         <ArrowLeft className="inline w-4 h-4 mr-1" /> Back
       </button>
+
+      {/* Resume & Case Studies button */}
+      {onResume && (
+        <motion.button
+          className="fixed top-6 right-6 z-50 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-body font-medium cursor-pointer"
+          style={{
+            background: "hsl(var(--card) / 0.7)",
+            backdropFilter: "blur(10px)",
+            border: "1px solid hsl(var(--glow-gold) / 0.3)",
+            color: "hsl(var(--glow-gold))",
+          }}
+          onClick={onResume}
+          whileHover={{ scale: 1.05, borderColor: "hsl(45 90% 60% / 0.6)" }}
+          whileTap={{ scale: 0.95 }}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1 }}
+        >
+          <FileText className="w-4 h-4" />
+          Resume & Case Studies
+        </motion.button>
+      )}
 
       {/* Bicycle rider - fixed */}
       <motion.div
