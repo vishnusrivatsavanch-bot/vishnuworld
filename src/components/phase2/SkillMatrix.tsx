@@ -12,17 +12,17 @@ const SkillMatrix = ({ activeFilter, onFilterChange }: SkillMatrixProps) => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
   return (
-    <section className="py-20 px-6 md:px-16" id="skills">
+    <section className="py-10 sm:py-20 px-4 sm:px-6 md:px-16" id="skills">
       <motion.div
         className="max-w-5xl mx-auto"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-        <div className="flex items-center justify-between mb-16">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-8 sm:mb-16">
           <div>
             <motion.h2
-              className="text-3xl md:text-5xl font-display font-bold mb-4"
+              className="text-xl sm:text-3xl md:text-5xl font-display font-bold mb-2 sm:mb-4"
               style={{ color: "hsl(var(--glow-gold))" }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ const SkillMatrix = ({ activeFilter, onFilterChange }: SkillMatrixProps) => {
               Skill Matrix
             </motion.h2>
             <motion.p
-              className="text-muted-foreground font-body text-lg"
+              className="text-muted-foreground font-body text-sm sm:text-lg"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -46,7 +46,7 @@ const SkillMatrix = ({ activeFilter, onFilterChange }: SkillMatrixProps) => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
-                className="flex items-center gap-2 px-4 py-2 rounded-full font-body text-sm border cursor-pointer"
+                className="flex items-center gap-2 px-4 py-2 rounded-full font-body text-xs sm:text-sm border cursor-pointer min-h-[44px]"
                 style={{
                   borderColor: "hsl(var(--glow-gold) / 0.4)",
                   color: "hsl(var(--glow-gold))",
@@ -63,7 +63,7 @@ const SkillMatrix = ({ activeFilter, onFilterChange }: SkillMatrixProps) => {
           </AnimatePresence>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {skillCategories.map((category, catIndex) => {
             const isActive = activeFilter === category.id;
             const Icon = category.icon;
@@ -71,7 +71,7 @@ const SkillMatrix = ({ activeFilter, onFilterChange }: SkillMatrixProps) => {
             return (
               <motion.div
                 key={category.id}
-                className="rounded-xl border p-6 cursor-pointer transition-all duration-300"
+                className="rounded-xl border p-4 sm:p-6 cursor-pointer transition-all duration-300"
                 style={{
                   background: isActive
                     ? "hsl(var(--city-accent) / 0.12)"
@@ -93,9 +93,9 @@ const SkillMatrix = ({ activeFilter, onFilterChange }: SkillMatrixProps) => {
                   onFilterChange(isActive ? null : category.id)
                 }
               >
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-3 mb-3 sm:mb-4">
                   <div
-                    className="w-10 h-10 rounded-lg flex items-center justify-center"
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center shrink-0"
                     style={{
                       background: isActive
                         ? "hsl(var(--city-accent) / 0.2)"
@@ -103,7 +103,7 @@ const SkillMatrix = ({ activeFilter, onFilterChange }: SkillMatrixProps) => {
                     }}
                   >
                     <Icon
-                      className="w-5 h-5"
+                      className="w-4 h-4 sm:w-5 sm:h-5"
                       style={{
                         color: isActive
                           ? "hsl(var(--city-accent))"
@@ -111,23 +111,28 @@ const SkillMatrix = ({ activeFilter, onFilterChange }: SkillMatrixProps) => {
                       }}
                     />
                   </div>
-                  <h3
-                    className="text-sm font-display font-bold"
-                    style={{
-                      color: isActive
-                        ? "hsl(var(--city-accent))"
-                        : "hsl(var(--foreground))",
-                    }}
-                  >
-                    {category.name}
-                  </h3>
+                  <div>
+                    <h3
+                      className="text-xs sm:text-sm font-display font-bold"
+                      style={{
+                        color: isActive
+                          ? "hsl(var(--city-accent))"
+                          : "hsl(var(--foreground))",
+                      }}
+                    >
+                      {category.name}
+                    </h3>
+                    <p className="text-[10px] sm:text-xs text-muted-foreground font-body mt-0.5">
+                      {category.tooltip}
+                    </p>
+                  </div>
                 </div>
 
                 <div className="flex flex-wrap gap-1.5">
                   {category.skills.map((skill) => (
                     <motion.span
                       key={skill}
-                      className="px-2 py-0.5 rounded text-xs font-body transition-colors duration-200 relative"
+                      className="px-2 py-0.5 sm:py-1 rounded text-[11px] sm:text-xs font-body transition-colors duration-200 relative"
                       style={{
                         background: "hsl(var(--muted) / 0.5)",
                         color: "hsl(var(--foreground) / 0.7)",
@@ -144,8 +149,8 @@ const SkillMatrix = ({ activeFilter, onFilterChange }: SkillMatrixProps) => {
                   ))}
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-border/10">
-                  <span className="text-xs font-body text-muted-foreground">
+                <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-border/10">
+                  <span className="text-[11px] sm:text-xs font-body text-muted-foreground">
                     {category.relatedCaseStudies.length} linked case{" "}
                     {category.relatedCaseStudies.length === 1 ? "study" : "studies"}
                   </span>
