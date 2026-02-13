@@ -5,7 +5,7 @@ import ParticleField from "@/components/ParticleField";
 import ProfessionalTimeline from "./ProfessionalTimeline";
 import SkillMatrix from "./SkillMatrix";
 import CaseStudies from "./CaseStudies";
-import { generateResumePDF } from "./pdfGenerator";
+
 
 interface ResumePageProps {
   onBack: () => void;
@@ -19,7 +19,12 @@ const ResumePage = ({ onBack }: ResumePageProps) => {
   const handleDownloadResume = async () => {
     setDownloading(true);
     await new Promise((r) => setTimeout(r, 600));
-    generateResumePDF();
+    const link = document.createElement("a");
+    link.href = "/Vishnu_Nallan_BusinessAnalyst_Resume.pdf";
+    link.download = "Vishnu_Nallan_BusinessAnalyst_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     setDownloading(false);
     setDownloaded(true);
     setTimeout(() => setDownloaded(false), 2000);
