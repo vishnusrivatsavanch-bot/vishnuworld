@@ -14,13 +14,13 @@ const sections = [
     sign: "About Street",
     icon: Briefcase,
     title: "The Vision",
-    content: "Sales Operations & Product Analytics professional with 4+ years of experience supporting growth initiatives in D2C healthcare and financial data analysis. Known for translating complex datasets into practical insights that improve conversion, retention, and operational visibility.",
+    content: "Sales Operations & Product Analytics professional with 4+ years of experience supporting growth initiatives in D2C healthcare and financial data analysis environments. Skilled in SQL, Excel automation, Tableau, CRM analytics, and financial data analysis. Seeking opportunities in Sales Operations, Product Analytics, or Revenue-focused analytical roles.",
     details: [
       "🎓 MBA in Marketing Analytics — Pace University, NYC (Jan 2023 – May 2025)",
       "🏗️ B.Tech in Civil Engineering — S R University, India",
-      "🌐 McKinsey Forward Program Alumni",
-      "📊 4+ Years in Sales Ops, Product Analytics & Healthcare",
-      "🏆 BCG Simulation (Forage) • EA Product Management Simulation",
+      "🌐 McKinsey Forward Program Alumni — Structured thinking, digital transformation & stakeholder communication",
+      "📊 4+ Years: Sales Operations → Product Analyst → MBA in Marketing Analytics",
+      "🏆 BCG Simulation (Forage) • EA Product Management Simulation • ML for Marketing Certification",
     ],
   },
   {
@@ -28,11 +28,11 @@ const sections = [
     sign: "Experience Avenue",
     icon: Code2,
     title: "Where I've Been",
-    content: "Progression from Sales Operations Analyst to Product Analyst, followed by MBA specialization and graduate-level finance research support. Driving automation, analytics, and business impact across healthcare and finance.",
+    content: "Background includes progression from Sales Operations Analyst to Product Analyst within the same organization, followed by MBA specialization in Marketing Analytics and graduate-level finance research support.",
     details: [
-      "🏛️ Pace University (Graduate Assistant) — Analyzed 150+ equity instruments, automated data prep with Python & VBA, improved accuracy for 430+ faculty records",
-      "🏥 Cardiocare Genetics (Business Analyst) — Improved retention by 12 pts (30%→42%), increased funnel conversion by ~35%, same-day reporting via SQL & Tableau",
-      "📈 Genething Healthyways (Sales Ops Analyst) — Raised signup conversion by ~18%, maintained 50K+ CRM records, built retention dashboards showing 3x stronger retention",
+      "🏛️ Pace University (Graduate Assistant) — Analyzed 150+ equity instruments & ETF portfolios using Bloomberg, automated data prep with Python & VBA, improved accuracy for 430+ faculty records",
+      "🏥 Cardiocare Genetics (Product Analyst & Business Analyst) — Improved retention by 12 pts (30%→42%), increased funnel conversion by ~35%, same-day reporting via SQL & Tableau, customer segmentation for budget allocation",
+      "📈 Genething Healthyways (Sales Ops Analyst) — Raised signup conversion by ~18%, maintained 50K+ CRM records, built retention dashboards showing 3x stronger retention, collaborated across Sales, Marketing, Product & Finance",
     ],
   },
   {
