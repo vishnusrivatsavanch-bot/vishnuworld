@@ -20,8 +20,8 @@ const ResumePage = ({ onBack }: ResumePageProps) => {
     setDownloading(true);
     await new Promise((r) => setTimeout(r, 600));
     const link = document.createElement("a");
-    link.href = "/Vishnu_Nallan_BusinessAnalyst_Resume.pdf";
-    link.download = "Vishnu_Nallan_BusinessAnalyst_Resume.pdf";
+    link.href = "/Vishnu_Nallan_Business_Analyst_Resume.pdf";
+    link.download = "Vishnu_Nallan_Business_Analyst_Resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -51,7 +51,7 @@ const ResumePage = ({ onBack }: ResumePageProps) => {
         />
       </div>
 
-      {/* Fixed Header - mobile-first, responsive */}
+      {/* Fixed Header */}
       <div
         className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 h-14 sm:h-16"
         style={{
@@ -136,7 +136,7 @@ const ResumePage = ({ onBack }: ResumePageProps) => {
           </h1>
 
           <p className="text-muted-foreground font-body text-sm sm:text-lg max-w-2xl mx-auto">
-            4+ years of driving automation, analytics, and business impact across healthcare and finance
+            4+ years driving healthcare analytics, financial data automation, and business impact across clinical & enterprise environments
           </p>
         </motion.div>
       </div>
